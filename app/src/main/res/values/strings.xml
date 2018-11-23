@@ -10,4 +10,37 @@
     <string name="speech_not_supported">Sorry! Your device doesn\'t support speech input</string>
         
     <string name="tap_on_mic">Tap on mic to speak</string>
+
+    <array name="speech_activation_types">
+        <item>@string/speech_activation_button</item>
+        <item>@string/speech_activation_movement</item>
+        <item>@string/speech_activation_clap</item>
+        <item>@string/speech_activation_speak</item>
+    </array>
+
+    <string name="speech_activation_default_label">Speak</string>
+
+    <string name="speech_activation_button">Button</string>
+    <string name="speech_activation_movement">Movement</string>
+    <string name="speech_activation_nfc">NFC Scan</string>
+    <string name="speech_activation_camera">Camera</string>
+    <string name="speech_activation_clap">Clap</string>
+    <string name="speech_activation_speak">Speak Hello</string>
+
+    <string name="speech_activation_notification_listening">Listening for </string>
+    <string name="speech_activation_notification_title">Speech Activation</string>
+
+    <array name="voiceaction_yeswords">
+        <item>yes</item>
+        <item>ok</item>
+    </array>
+    <array name="voiceaction_nowords">
+        <item>no</item>
+    </array>
+    <array name="voiceaction_neutralwords">
+        <item>cancel</item>
+        <item>done</item>
+    </array>
+
+
 </resources>
