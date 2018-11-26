@@ -1,7 +1,9 @@
 package gkemon.binarygeek.com.voicetotext;
 
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
@@ -34,13 +36,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        startService(new Intent(this, SpeechRecognizerService.class));
 
         txtSpeechInput = (TextView) findViewById(R.id.txtSpeechInput);
         btnSpeak = (ImageButton) findViewById(R.id.btnSpeak);
-
-
-
-
 
 
         btnSpeak.setOnClickListener(new View.OnClickListener() {
@@ -179,12 +178,22 @@ public class MainActivity extends AppCompatActivity {
 
                     if(results.size()==1)
                     {
-                        if(mSpeechManager!=null)
-                        mSpeechManager.destroy();
+
+                        //TODO stop
+//                        if(mSpeechManager!=null)
+//                        mSpeechManager.destroy();
+//                        mSpeechManager = null;
 
 
-                        //TODO
-                        mSpeechManager = null;
+                        if(results.get(0).equals("hello music")){
+
+                            Toast.makeText(MainActivity.this,"Hello music",Toast.LENGTH_LONG).show();
+
+                            Intent i = MainActivity.this.getPackageManager().getLaunchIntentForPackage("binarygeek.tutorfinder");
+                            MainActivity.this.startActivity(i);
+
+                        }
+
                         txtSpeechInput.setText(results.get(0));
                     }
                     else {
@@ -193,9 +202,20 @@ public class MainActivity extends AppCompatActivity {
                             results = (ArrayList<String>) results.subList(0, 5);
                         }
                         for (String result : results) {
+                            if(result.equals("hello music")){
+
+                                Toast.makeText(MainActivity.this,"Hello music",Toast.LENGTH_LONG).show();
+
+                                    Intent i = MainActivity.this.getPackageManager().getLaunchIntentForPackage("binarygeek.tutorfinder");
+                                    MainActivity.this.startActivity(i);
+
+                            }
+
                             sb.append(result).append("\n");
                         }
                         txtSpeechInput.setText(sb.toString());
+
+
                     }
                 }
                 else
